@@ -2,7 +2,6 @@ name: CI
 
 on:
   push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -22,17 +21,16 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v1
         with:
-          version: "0.5.30"
+          version: "latest"
 
       - name: Install dependencies
-        run: |
-          uv pip install -r requirements.txt -r requirements-dev.txt --system
+        run: make init
 
       - name: Run tests
-        run: pytest -v
+        run: make test
 
       - name: Run linter
-        run: ruff check .
+        run: make lint
 
       - name: Run type checker
-        run: mypy src
+        run: make type
