@@ -1,11 +1,11 @@
 FROM python:3.13-slim
-COPY --from=ghcr.io/astral-sh/uv:0.5.30 /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:0.6.2 /uv /uvx /bin/
 
 WORKDIR /app
-COPY pyproject.toml .
-COPY uv.lock .
+COPY server/pyproject.toml .
+COPY server/uv.lock .
 RUN uv sync
-COPY . .
+COPY server/ .
 
 ENV PYTHONPATH=/app/src
 ENV SERVER_ENV=production

@@ -6,12 +6,13 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  server-ci:
     runs-on: ubuntu-latest
     env:
       PYTHONPATH: src
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -24,13 +25,13 @@ jobs:
           version: "latest"
 
       - name: Install dependencies
-        run: make init
-
-      - name: Run tests
-        run: make test
+        run: make server-init
 
       - name: Run linter
-        run: make lint
+        run: make server-lint
 
       - name: Run type checker
-        run: make type
+        run: make server-type
+
+      - name: Run tests
+        run: make server-test

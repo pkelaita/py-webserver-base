@@ -4,17 +4,25 @@ export PYTHONPATH := src
 
 default: lint type test
 
-init:
-	uv sync
+init: server-init
+lint: server-lint
+type: server-type
+test: server-test
 
-dev:
-	SERVER_ENV=development uv run uvicorn src.api:app --reload --port 8080
 
-test:
-	uv run pytest -v --cov=src --cov-report=term-missing
+# Server
 
-lint:
-	uv run ruff check .
+server-init:
+	cd server && uv sync
 
-type:
-	uv run mypy src
+server-dev:
+	cd server && SERVER_ENV=development uv run uvicorn src.api:app --reload --port 8080
+
+server-test:
+	cd server && uv run pytest -v --cov=src --cov-report=term-missing
+
+server-lint:
+	-cd server && uv run ruff check .
+
+server-type:
+	-cd server && uv run mypy src

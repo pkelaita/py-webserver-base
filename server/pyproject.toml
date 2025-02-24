@@ -4,30 +4,22 @@ version = "0.0.1"
 description = "This is just a skeleton. Replace this with the description."
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = ["fastapi==0.115.8", "pydantic==2.10.6", "uvicorn==0.34.0"]
+dependencies = ["fastapi>=0.115.8", "pydantic>=2.10.6", "uvicorn>=0.34.0"]
 
 [dependency-groups]
 dev = [
-    "httpx==0.28.1",
-    "mypy==1.15.0",
-    "pytest==8.3.4",
-    "pytest-asyncio==0.25.3",
-    "pytest-cov==6.0.0",
-    "python-dotenv==1.0.1",
-    "ruff==0.9.6",
+    "httpx>=0.28.1",
+    "mypy>=1.15.0",
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.25.3",
+    "pytest-cov>=6.0.0",
+    "python-dotenv>=1.0.1",
+    "ruff>=0.9.7",
 ]
 
 
 [tool.mypy]
-exclude = [
-    "build",
-    "dist",
-    "venv",
-    "integration_tests",
-    "scripts",
-    "tests",
-    "playground",
-]
+exclude = ["build", "dist", "tests"]
 
 ignore_missing_imports = true
 explicit_package_bases = true

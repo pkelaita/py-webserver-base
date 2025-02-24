@@ -17,7 +17,7 @@ make init
 
 ## Development
 
-- Run the webserver: `make dev`
+- Run the webserver: `make server-dev`
 - Run tests: `make test`
 - Lint: `make lint`
 - Typecheck: `make type`
