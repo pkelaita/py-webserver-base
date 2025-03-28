@@ -18,11 +18,11 @@ server-init:
 server-dev:
 	cd server && SERVER_ENV=development uv run uvicorn src.api:app --reload --port 8080
 
-server-test:
-	cd server && uv run pytest -v --cov=src --cov-report=term-missing
-
 server-lint:
-	-cd server && uv run ruff check .
+	cd server && uv run ruff check .
 
 server-type:
-	-cd server && uv run mypy src
+	cd server && uv run mypy src
+
+server-test:
+	cd server && uv run pytest -v --cov=src --cov-report=term-missing
